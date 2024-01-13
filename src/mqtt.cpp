@@ -65,6 +65,7 @@ bool checkMQTTconnection() {
         mqttClient.subscribe(MQTTCMND_RIGHT);
         mqttClient.subscribe(MQTTCMND_LEFT);
         mqttClient.subscribe(MQTTCMND_SELECT);
+        mqttClient.subscribe(MQTTCMND_SENDSTRING);
 
         mqttClient.subscribe(MQTTCMND_BACK);
         mqttClient.subscribe(MQTTCMND_HOME);
@@ -77,7 +78,9 @@ bool checkMQTTconnection() {
         mqttClient.subscribe(MQTTCMND_FASTFORWARD);
         mqttClient.subscribe(MQTTCMND_FASTFORWARD_LONG);
         mqttClient.subscribe(MQTTCMND_SCAN_NEXT_TRACK);
-        mqttClient.subscribe(MQTTCMND_SENDSTRING);
+        mqttClient.subscribe(MQTTCMND_MUTE);
+        mqttClient.subscribe(MQTTCMND_VOLUME_INCREMENT);
+        mqttClient.subscribe(MQTTCMND_VOLUME_DECREMENT);
 
         mqttClient.subscribe(MQTTCMND_RESTART_ESP32);
       } else {
@@ -184,6 +187,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
     if (doLog) {Serial.printf("SELECT received\r\n");}
     keyboard_write(KEY_RETURN);
 
+  } else if (strcmp(MQTTCMND_SENDSTRING, topic) == 0) {
+    if (doLog) {Serial.printf("SENDSTRING received\r\n");}
+    if (strPayload != "") {
+      keyboard_sendString(strPayload.c_str());
+    }
+
 
 
   } else if (strcmp(MQTTCMND_BACK, topic) == 0) {
@@ -233,11 +242,17 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
 
 
-  } else if (strcmp(MQTTCMND_SENDSTRING, topic) == 0) {
-    if (doLog) {Serial.printf("SENDSTRING received\r\n");}
-    if (strPayload != "") {
-      keyboard_sendString(strPayload.c_str());
-    }
+  } else if (strcmp(MQTTCMND_MUTE, topic) == 0) {
+    if (doLog) {Serial.printf("MUTE received\r\n");}
+    consumerControl_write(CONSUMER_CONTROL_MUTE);
+
+  } else if (strcmp(MQTTCMND_VOLUME_INCREMENT, topic) == 0) {
+    if (doLog) {Serial.printf("VOLUME_INCREMENT received\r\n");}
+    consumerControl_write(CONSUMER_CONTROL_VOLUME_INCREMENT);
+
+  } else if (strcmp(MQTTCMND_VOLUME_DECREMENT, topic) == 0) {
+    if (doLog) {Serial.printf("VOLUME_DECREMENT received\r\n");}
+    consumerControl_write(CONSUMER_CONTROL_VOLUME_DECREMENT);
 
 
 
