@@ -6,7 +6,7 @@ This project turns an ESP32 <b>S3</b> into a HID keyboard. The keyboard emulates
 
 What is this good for?
 * if you can't or don't want to connect an ESP32 as a bluetooth keyboard to your device, you could still connect an ESP32 S3 via USB cable
-* in my case the bluetooth connection between an ESP32 and an Amazon Fire TV did not work, so I used a USB cable connection to connect the ESP32 S3 as a keyboard to control the Amazon Fire TV
+* in my case the bluetooth connection between an ESP32 and an Amazon Fire TV did not work, so I used a USB cable connection to connect the ESP32 S3 as a keyboard to control the Amazon Fire TV (if your Fire TV or Fire TV Stick has no USB port, you can use an USB OTG splitter before the power port).
 
 Features are
 * robust WiFi and MQTT connection. If disconnected, device will automatically reconnect
