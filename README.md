@@ -1,4 +1,4 @@
-# esp32-mqtt-keyboard
+# esp32 mqtt keyboard
 ## Overview
 This project turns an ESP32 <b>S3</b> into a HID keyboard. The keyboard emulates a <b>hardware keyboard</b>, not a bluetooth keyboard.
 * only works with an ESP32 S3 (tested) or ESP32 S2 (not tested), because the original ESP32 does not support native USB OTG
