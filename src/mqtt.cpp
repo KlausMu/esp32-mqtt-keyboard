@@ -197,11 +197,15 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   } else if (strcmp(MQTTCMND_BACK, topic) == 0) {
     if (doLog) {Serial.printf("BACK received\r\n");}
-    keyboard_write(KEY_ESC);
+    // test which one works best for your device
+    // keyboard_write(KEY_ESC);
+    consumerControl_write(CONSUMER_CONTROL_BACK);
 
   } else if (strcmp(MQTTCMND_HOME, topic) == 0) {
     if (doLog) {Serial.printf("HOME received\r\n");}
-    keyboard_home();
+    // test which one works best for your device
+    // keyboard_home();
+    consumerControl_write(CONSUMER_CONTROL_HOME);
 
   } else if (strcmp(MQTTCMND_MENU, topic) == 0) {
     if (doLog) {Serial.printf("MENU received\r\n");}
