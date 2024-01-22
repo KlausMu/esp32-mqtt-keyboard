@@ -27,12 +27,12 @@ void keyboard_sendString(const String &s) {
   Keyboard.print(s);
 }
 
-void consumerControl_write(uint8_t value) {
+void consumerControl_write(uint16_t value) {
   ConsumerControl.press(value);
   ConsumerControl.release();
 }
 
-void consumerControl_longpress(uint8_t value) {
+void consumerControl_longpress(uint16_t value) {
   ConsumerControl.press(value);
   delay(1000);
   ConsumerControl.release();

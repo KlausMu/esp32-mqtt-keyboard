@@ -22,5 +22,5 @@ void keyboard_setup(void);
 void keyboard_write(uint8_t c);
 void keyboard_home();
 void keyboard_sendString(const String &s);
-void consumerControl_write(uint8_t value);
-void consumerControl_longpress(uint8_t value);
+void consumerControl_write(uint16_t value);
+void consumerControl_longpress(uint16_t value);
