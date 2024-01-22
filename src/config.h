@@ -28,7 +28,11 @@
 #define MQTTTELESTATE1               UNIQUE_DEVICE_NAME "/tele/STATE1"
 #define MQTTTELESTATE2               UNIQUE_DEVICE_NAME "/tele/STATE2"
 
-// --- include override settings from seperate file ---------------------------------------------------------------------------------------------------------------
+// --- OTA - over the air updates -----------------------------------------------------------------------------------------------------------
+#define useOTAUpdate
+// #define useOTA_RTOS
+
+// --- include override settings from seperate file -----------------------------------------------------------------------------------------
 #if __has_include("config_override.h")
   #include "config_override.h"
 #endif

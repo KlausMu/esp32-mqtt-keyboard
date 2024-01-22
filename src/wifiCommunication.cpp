@@ -3,6 +3,7 @@
 
 #include "wifiCommunication.h"
 #include "config.h"
+#include "OTA.h"
 
 boolean connected = false;
 bool wifiIsDisabled = true;
@@ -37,6 +38,7 @@ void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info){
   // shouldn't even be here when wifiIsDisabled, but still happens ...
   if (!wifiIsDisabled) {
     // immediately try to reconnect WiFi
+    OTAstarted = false;
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   }
 }
