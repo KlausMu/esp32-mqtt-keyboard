@@ -1,3 +1,5 @@
+![Build](https://github.com/KlausMu/esp32-mqtt-keyboard/actions/workflows/build-platformio.yml/badge.svg)
+
 # esp32 mqtt keyboard
 ## Overview
 This project turns an ESP32 <b>S3</b> into a HID keyboard. The keyboard emulates a <b>hardware keyboard</b>, not a bluetooth keyboard.
